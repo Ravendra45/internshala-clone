@@ -1,0 +1,10 @@
+{
+  "builds": [
+    { "src": "internarea/package.json", "use": "@vercel/next" },
+    { "src": "backend/api/index.js", "use": "@vercel/node" }
+  ],
+  "routes": [
+    { "src": "/api/(.*)", "dest": "backend/api/index.js" },
+    { "src": "/(.*)", "dest": "internarea/$1" }
+  ]
+}
