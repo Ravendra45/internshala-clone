@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-      "build": "react-scripts build",
+    "build": "react-scripts build",
     "start": "react-scripts start",
-     "preview": "serve -s build",
+    "preview": "serve -s build",
     "lint": "next lint"
   },
   "dependencies": {
@@ -21,6 +21,7 @@
     "react-dom": "^19.0.0",
     "react-i18next": "^11.18.6",
     "react-redux": "^9.2.0",
+    "react-scripts": "^0.0.0",
     "react-toastify": "^11.0.5",
     "swiper": "^11.2.5"
   },
