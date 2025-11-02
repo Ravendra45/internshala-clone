@@ -1,0 +1,10 @@
+[build]
+  base    = "internarea"
+  command = "npm ci && npm run build"
+  publish = "internarea/out"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = true
