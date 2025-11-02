@@ -8,6 +8,32 @@ const { sendEmail } = require('../utils/email');
 
 const razorpay = new Razorpay({ key_id: process.env.RAZORPAY_KEY_ID, key_secret: process.env.RAZORPAY_KEY_SECRET });
 
+
+
+
+let razorpayClient = null;
+try {
+  const Razorpay = require('razorpay');
+  if (process.env.RAZORPAY_KEY_ID && process.env.RAZORPAY_KEY_SECRET) {
+    razorpayClient = new Razorpay({
+      key_id: process.env.RAZORPAY_KEY_ID,
+      key_secret: process.env.RAZORPAY_KEY_SECRET,
+    });
+  } else {
+    console.warn('Razorpay keys not set; payment endpoints will be disabled.');
+  }
+} catch (err) {
+  console.warn('Failed to initialize Razorpay client:', err.message);
+  razorpayClient = null;
+}
+
+
+
+
+
+
+
+
 function isWithinPaymentWindow() {
   const h = moment().tz('Asia/Kolkata').hour();
   // allow only between 10:00 and 11:00 (10 <= hour < 11)
@@ -52,5 +78,8 @@ router.post('/verify', async (req,res) => {
 
   res.json({ msg: 'subscription activated' });
 });
+
+
+
 
 module.exports = router;
